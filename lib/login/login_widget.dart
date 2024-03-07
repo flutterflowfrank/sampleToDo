@@ -24,11 +24,11 @@ class _LoginWidgetState extends State<LoginWidget> {
     super.initState();
     _model = createModel(context, () => LoginModel());
 
-    _model.emailAddressController ??= TextEditingController();
-    _model.emailAddressFocusNode ??= FocusNode();
+    _model.loginEmailAddressController ??= TextEditingController();
+    _model.loginEmailAddressFocusNode ??= FocusNode();
 
-    _model.passwordController ??= TextEditingController();
-    _model.passwordFocusNode ??= FocusNode();
+    _model.loginPasswordController ??= TextEditingController();
+    _model.loginPasswordFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -163,8 +163,9 @@ class _LoginWidgetState extends State<LoginWidget> {
                                       width: double.infinity,
                                       child: TextFormField(
                                         controller:
-                                            _model.emailAddressController,
-                                        focusNode: _model.emailAddressFocusNode,
+                                            _model.loginEmailAddressController,
+                                        focusNode:
+                                            _model.loginEmailAddressFocusNode,
                                         autofocus: true,
                                         autofillHints: const [AutofillHints.email],
                                         obscureText: false,
@@ -224,7 +225,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                         keyboardType:
                                             TextInputType.emailAddress,
                                         validator: _model
-                                            .emailAddressControllerValidator
+                                            .loginEmailAddressControllerValidator
                                             .asValidator(context),
                                       ),
                                     ),
@@ -235,11 +236,14 @@ class _LoginWidgetState extends State<LoginWidget> {
                                     child: SizedBox(
                                       width: double.infinity,
                                       child: TextFormField(
-                                        controller: _model.passwordController,
-                                        focusNode: _model.passwordFocusNode,
+                                        controller:
+                                            _model.loginPasswordController,
+                                        focusNode:
+                                            _model.loginPasswordFocusNode,
                                         autofocus: true,
                                         autofillHints: const [AutofillHints.password],
-                                        obscureText: !_model.passwordVisibility,
+                                        obscureText:
+                                            !_model.loginPasswordVisibility,
                                         decoration: InputDecoration(
                                           labelText: 'Password',
                                           labelStyle:
@@ -292,13 +296,15 @@ class _LoginWidgetState extends State<LoginWidget> {
                                                   .primaryBackground,
                                           suffixIcon: InkWell(
                                             onTap: () => setState(
-                                              () => _model.passwordVisibility =
-                                                  !_model.passwordVisibility,
+                                              () => _model
+                                                      .loginPasswordVisibility =
+                                                  !_model
+                                                      .loginPasswordVisibility,
                                             ),
                                             focusNode:
                                                 FocusNode(skipTraversal: true),
                                             child: Icon(
-                                              _model.passwordVisibility
+                                              _model.loginPasswordVisibility
                                                   ? Icons.visibility_outlined
                                                   : Icons
                                                       .visibility_off_outlined,
@@ -312,7 +318,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyLarge,
                                         validator: _model
-                                            .passwordControllerValidator
+                                            .loginPasswordControllerValidator
                                             .asValidator(context),
                                       ),
                                     ),
@@ -327,8 +333,9 @@ class _LoginWidgetState extends State<LoginWidget> {
                                         final user =
                                             await authManager.signInWithEmail(
                                           context,
-                                          _model.emailAddressController.text,
-                                          _model.passwordController.text,
+                                          _model
+                                              .loginEmailAddressController.text,
+                                          _model.loginPasswordController.text,
                                         );
                                         if (user == null) {
                                           return;
