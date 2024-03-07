@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "521756896134",
+    "project_id": "sampletodo2",
+    "storage_bucket": "sampletodo2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:521756896134:android:7c32e8ad7ddcae3b911a07",
+        "android_client_info": {
+          "package_name": "com.mycompany.sampletodo2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBGfVqTcWlAwjAauKtGDjK67QZF2NB2bk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
